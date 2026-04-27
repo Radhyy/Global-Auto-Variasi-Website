@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Auto Variasi | Spesialis Variasi Kendaraan Premium</title>
+    <meta
+      name="description"
+      content="Global Auto Variasi menghadirkan produk dan jasa modifikasi mobil premium: audio, body kit, velg, interior, lampu, dan cutting sticker."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+              body: ["Plus Jakarta Sans", "sans-serif"]
+            },
+            colors: {
+              primary: {
+                50: "#fff5f2",
+                100: "#ffe4dc",
+                500: "#e62413",
+                600: "#c91a0c",
+                700: "#9c1309"
+              },
+              accent: {
+                300: "#ffd36a",
+                400: "#ffbd2e"
+              },
+              ink: {
+                900: "#0f1115",
+                800: "#171a21",
+                700: "#252a33"
+              }
+            },
+            boxShadow: {
+              panel: "0 15px 40px rgba(12, 12, 12, 0.24)",
+              soft: "0 10px 30px rgba(0, 0, 0, 0.15)"
+            }
+          }
+        }
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="font-body bg-slate-100 text-ink-800">
+    <div class="relative overflow-hidden">
+      <svg
+        class="pointer-events-none absolute -left-32 top-36 hidden h-[340px] w-[340px] opacity-30 lg:block"
+        viewBox="0 0 300 300"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <circle cx="150" cy="150" r="128" stroke="#e62413" stroke-width="12" />
+        <circle cx="150" cy="150" r="82" stroke="#ffbd2e" stroke-width="8" stroke-dasharray="10 12" />
+      </svg>
+
+      <header class="fixed left-0 right-0 top-0 z-50 border-b border-black/20 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 shadow-panel">
+        <div class="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <a href="#" class="brand-link" aria-label="Global Auto Variasi">
+            <img src="LOGO/Logo.png" alt="Global Auto Variasi" class="brand-logo" />
+          </a>
+
+          <button
+            id="menuBtn"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/35 text-white lg:hidden"
+            type="button"
+            aria-label="Buka menu"
+            aria-expanded="false"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+            </svg>
+          </button>
+
+          <nav id="desktopNav" class="hidden items-center gap-7 lg:flex">
+            <a class="nav-link" href="#beranda">Beranda</a>
+            <a class="nav-link" href="#layanan">Layanan</a>
+            <a class="nav-link" href="#tentang">Tentang</a>
+            <a class="nav-link" href="#testimoni">Testimoni</a>
+            <a class="nav-link" href="#kontak">Kontak</a>
+          </nav>
+        </div>
+
+        <nav id="mobileNav" class="hidden border-t border-white/20 bg-primary-600/95 px-4 py-3 lg:hidden">
+          <div class="grid gap-2 text-sm uppercase tracking-wide text-white">
+            <a class="mobile-link" href="#beranda">Beranda</a>
+            <a class="mobile-link" href="#layanan">Layanan</a>
+            <a class="mobile-link" href="#tentang">Tentang</a>
+            <a class="mobile-link" href="#testimoni">Testimoni</a>
+            <a class="mobile-link" href="#kontak">Kontak</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="pt-20">
+        <section id="beranda" class="hero-section relative isolate">
+          <div class="hero-bg"></div>
+          <div class="hero-overlay"></div>
+
+          <div class="hero-shell relative mx-auto flex min-h-[78vh] w-full max-w-6xl flex-col justify-end px-4 pb-16 pt-20 sm:px-6 lg:px-8">
+            <div class="reveal max-w-2xl">
+              <p class="hero-tagline mb-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-white/90">
+                Workshop Variasi Mobil Profesional
+              </p>
+              <h1 class="hero-title font-display text-4xl font-extrabold uppercase leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+                Global
+                <span class="text-accent-300">Auto</span>
+                Variasi
+              </h1>
+              <p class="hero-copy mt-5 max-w-xl text-base text-slate-100 sm:text-lg">
+                Solusi lengkap modifikasi kendaraan dari audio premium hingga interior custom,
+                dengan standar pengerjaan rapi, presisi, dan tahan lama.
+              </p>
+              <div class="hero-actions mt-8 flex flex-wrap gap-3">
+                <a href="#layanan" class="btn-primary">Lihat Layanan</a>
+                <a href="#kontak" class="btn-secondary">Konsultasi Sekarang</a>
+              </div>
+            </div>
+
+            <div class="hero-stats reveal mt-12 grid gap-4 sm:grid-cols-3">
+              <article class="metric-card">
+                <p class="metric-value"><span class="counter" data-target="5000">0</span><span class="text-primary-500">+</span></p>
+                <p class="metric-label">Kendaraan Dimodifikasi</p>
+              </article>
+              <article class="metric-card">
+                <p class="metric-value"><span class="counter" data-target="16">0</span><span class="text-primary-500">+</span></p>
+                <p class="metric-label">Tahun Pengalaman</p>
+              </article>
+              <article class="metric-card">
+                <p class="metric-value"><span class="counter" data-target="200">0</span><span class="text-primary-500">+</span></p>
+                <p class="metric-label">Produk Tersedia</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="layanan" class="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+          <div class="reveal mb-10 max-w-2xl">
+            <p class="section-eyebrow">Layanan Kami</p>
+            <h2 class="section-title">Semua Kebutuhan Variasi Kendaraan Anda</h2>
+            <p class="section-copy">Mulai dari peningkatan tampilan hingga kenyamanan berkendara, kami siapkan paket modifikasi sesuai karakter mobil Anda.</p>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="service-card reveal">
+              <span class="icon-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11v7m4-10v10m4-6v6m4-8v8M4 6h16"/></svg>
+              </span>
+              <h3>Audio & Head Unit</h3>
+              <p>Sistem audio presisi untuk suara jernih, bass solid, dan integrasi head unit modern.</p>
+            </article>
+            <article class="service-card reveal">
+              <span class="icon-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16l1.5-5h13L20 16M6 11l2-4h8l2 4M3 16h18M7 20h.01M17 20h.01"/></svg>
+              </span>
+              <h3>Body Kit & Spoiler</h3>
+              <p>Upgrade eksterior dengan body kit aerodinamis dan spoiler yang presisi fitting.</p>
+            </article>
+            <article class="service-card reveal">
+              <span class="icon-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a8 8 0 100 16 8 8 0 000-16zm0 3v10M7 12h10"/></svg>
+              </span>
+              <h3>Velg & Ban</h3>
+              <p>Pilihan velg racing dan ban performa untuk handling stabil serta tampilan agresif.</p>
+            </article>
+            <article class="service-card reveal">
+              <span class="icon-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+              </span>
+              <h3>Interior & Jok</h3>
+              <p>Custom jok kulit, dashboard, hingga door trim dengan material premium.</p>
+            </article>
+            <article class="service-card reveal">
+              <span class="icon-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6z"/></svg>
+              </span>
+              <h3>Lampu & LED</h3>
+              <p>Instalasi lampu HID, projector, dan ambient LED dengan pencahayaan presisi.</p>
+            </article>
+            <article class="service-card reveal">
+              <span class="icon-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h8"/></svg>
+              </span>
+              <h3>Cutting Sticker</h3>
+              <p>Desain grafis custom, wrapping, dan decal untuk identitas visual yang unik.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="tentang" class="bg-ink-900 py-20 text-white">
+          <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.2fr,0.8fr] lg:px-8">
+            <div class="reveal">
+              <p class="section-eyebrow text-primary-500">Mengapa Kami</p>
+              <h2 class="section-title text-white">Pilihan Utama Pecinta Otomotif</h2>
+              <p class="section-copy text-slate-300">Tim kami terdiri dari teknisi berpengalaman dengan SOP instalasi yang konsisten, sehingga kualitas hasil tetap terjaga di setiap proyek.</p>
+
+              <div class="mt-8 grid gap-4">
+                <article class="feature-item">
+                  <h3>Produk Original Bergaransi</h3>
+                  <p>Seluruh komponen dipilih dari distributor tepercaya dan dilengkapi garansi.</p>
+                </article>
+                <article class="feature-item">
+                  <h3>Teknisi Bersertifikasi</h3>
+                  <p>Pengerjaan dikerjakan teknisi ahli dengan pengecekan detail berlapis.</p>
+                </article>
+                <article class="feature-item">
+                  <h3>Desain Sesuai Karakter Anda</h3>
+                  <p>Konsultasi konsep hingga implementasi agar hasil modifikasi tetap personal.</p>
+                </article>
+              </div>
+            </div>
+
+            <aside class="reveal rounded-2xl border border-white/10 bg-ink-800 p-6 shadow-panel">
+              <div class="rounded-xl border border-white/15 bg-gradient-to-br from-white/5 to-transparent p-5">
+                <svg class="h-28 w-full rounded-lg border border-white/20 bg-white/5 p-3" viewBox="0 0 200 120" fill="none" aria-hidden="true">
+                  <path d="M20 88h160M30 88l14-28h108l18 28" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="58" cy="88" r="12" fill="#9ca3af"/>
+                  <circle cx="146" cy="88" r="12" fill="#9ca3af"/>
+                </svg>
+
+                <p class="mt-6 font-display text-6xl font-extrabold leading-none text-white">
+                  <span class="counter" data-target="16">0</span><span class="text-primary-500">+</span>
+                </p>
+                <p class="mt-1 text-sm uppercase tracking-[0.2em] text-slate-300">Tahun Melayani</p>
+              </div>
+
+              <ul class="mt-6 grid gap-3 text-sm">
+                <li class="badge-item">Garansi pemasangan hingga 30 hari</li>
+                <li class="badge-item">Konsultasi desain gratis</li>
+                <li class="badge-item">After-sales support responsif</li>
+                <li class="badge-item">Estimasi pengerjaan transparan</li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+
+        <section id="testimoni" class="bg-slate-200 py-20">
+          <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div class="reveal mb-10 text-center">
+              <p class="section-eyebrow">Testimoni</p>
+              <h2 class="section-title mx-auto max-w-3xl">Kata Pelanggan Kami</h2>
+              <p class="section-copy mx-auto max-w-2xl">Ribuan pelanggan mempercayakan modifikasi kendaraan mereka kepada Global Auto Variasi dengan hasil yang rapi dan tahan lama.</p>
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <article class="testimonial-card reveal">
+                <div class="avatar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-4.4 5-6 8-6s6.2 1.6 8 6"/></svg>
+                </div>
+                <h3>Iqbal Absifa</h3>
+                <div class="rating-stars" aria-label="Rating 4 dari 5 bintang">
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <p>Tempat yang berbahaya bagi pecinta mobil. Awalnya cuma mau pasang satu, ujung-ujungnya nambah ini itu. Pilihan variasinya banyak, hasilnya rapi, masnya sabar jelasin. Rekomended buat yang mau mobilnya naik level.</p>
+              </article>
+              <article class="testimonial-card reveal">
+                <div class="avatar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-4.4 5-6 8-6s6.2 1.6 8 6"/></svg>
+                </div>
+                <h3>R. Ivan. B.</h3>
+                <div class="rating-stars" aria-label="Rating 5 dari 5 bintang">
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <p>Benerin headlamp yang kemasukan air, poles, sekaligus pasang stiker. Pelayanan sangat baik dan mekanik sangat ramah.</p>
+              </article>
+              <article class="testimonial-card reveal">
+                <div class="avatar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-4.4 5-6 8-6s6.2 1.6 8 6"/></svg>
+                </div>
+                <h3>DJWK</h3>
+                <div class="rating-stars" aria-label="Rating 5 dari 5 bintang">
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <p>Definisi auto variasi serba bisa, pantang bilang tidak bisa sebelum dicek. Moonroof OS PX saya selesai 20 menit. Terima kasih mas Candra.</p>
+              </article>
+              <article class="testimonial-card reveal">
+                <div class="avatar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-4.4 5-6 8-6s6.2 1.6 8 6"/></svg>
+                </div>
+                <h3>Adi Sucipto</h3>
+                <div class="rating-stars" aria-label="Rating 5 dari 5 bintang">
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <p>Mantap kalau mau mempercantik mobil, tidak salah di sini tempatnya. Puas banget modifikasi di sini, harga terjangkau dan kualitas nyata.</p>
+              </article>
+              <article class="testimonial-card reveal">
+                <div class="avatar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-4.4 5-6 8-6s6.2 1.6 8 6"/></svg>
+                </div>
+                <h3>Candra Ari</h3>
+                <div class="rating-stars" aria-label="Rating 5 dari 5 bintang">
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <p>Bengkel aksesoris variasi mobil recommended di Sidoarjo. Pelayanan terbaik, pengerjaannya profesional banget, tidak mengecewakan dengan hasilnya.</p>
+              </article>
+              <article class="testimonial-card reveal">
+                <div class="avatar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-4.4 5-6 8-6s6.2 1.6 8 6"/></svg>
+                </div>
+                <h3>Awang Murtazaw</h3>
+                <div class="rating-stars" aria-label="Rating 5 dari 5 bintang">
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                  <svg viewBox="0 0 24 24" class="is-active" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <p>Bengkelnya luar biasa. Pelayanan memuaskan, aksesoris murah dan lengkap. Pemiliknya baik hati.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="kontak" class="relative overflow-hidden bg-primary-600 py-16 text-center text-white">
+          <svg class="pointer-events-none absolute inset-0 h-full w-full opacity-20" viewBox="0 0 800 240" fill="none" aria-hidden="true">
+            <path d="M0 210C120 120 240 120 360 210C480 300 600 300 800 150" stroke="#fff" stroke-width="3" />
+            <path d="M0 160C160 40 290 70 430 160C570 250 680 240 800 90" stroke="#ffbd2e" stroke-width="3" />
+          </svg>
+
+          <div class="relative mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+            <p class="section-eyebrow text-accent-300">Hubungi Kami</p>
+            <h2 class="font-display text-3xl font-bold uppercase sm:text-4xl">Wujudkan Mobil Impian Anda Sekarang</h2>
+            <p class="mt-4 text-3xl font-extrabold text-accent-300 sm:text-4xl">(031) 7234-5678</p>
+            <p class="mt-4 text-sm text-white/90 sm:text-base">Jl. Mayjend Sungkono No.11, Pucang, Kec. Sidoarjo, Kabupaten Sidoarjo</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-ink-900 py-14 text-slate-300">
+        <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.2fr,1fr,1fr,1fr] lg:px-8">
+          <div>
+            <h2 class="font-display text-3xl font-extrabold uppercase text-accent-300">Global Auto <span class="text-white">Variasi</span></h2>
+            <p class="mt-4 max-w-md text-sm leading-relaxed text-slate-400">Pusat variasi dan modifikasi kendaraan terpercaya di Surabaya sejak 2008. Produk original, kualitas pengerjaan presisi, dan harga kompetitif.</p>
+          </div>
+
+          <div>
+            <h3 class="footer-title">Jam Operasional</h3>
+            <ul class="footer-list">
+              <li>Senin - Jumat: 08.00 - 17.00</li>
+              <li>Sabtu: 08.00 - 16.00</li>
+              <li>Minggu: 09.00 - 14.00</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-title">Layanan</h3>
+            <ul class="footer-list">
+              <li>Audio & Head Unit</li>
+              <li>Body Kit & Spoiler</li>
+              <li>Velg & Ban</li>
+              <li>Custom Interior</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-title">Informasi</h3>
+            <ul class="footer-list">
+              <li>Tentang Kami</li>
+              <li>Galeri</li>
+              <li>Promo</li>
+              <li>Karir</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mx-auto mt-12 w-full max-w-6xl border-t border-white/10 px-4 pt-6 text-xs text-slate-500 sm:px-6 lg:px-8">© 2026 Global Auto Variasi Surabaya. Hak cipta dilindungi.</p>
+      </footer>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
