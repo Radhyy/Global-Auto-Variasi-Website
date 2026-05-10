@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Auto Variasi - Inventory</title>
+  <meta name="description" content="Inventory Control Global Auto Variasi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="page-inventory" class="dashboard-page page active" style="display:flex;">
+    <header class="db-topbar">
+      <div class="db-topbar-left">
+        <button class="db-menu-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar"><span class="material-icons-round">menu</span></button>
+        <h1>Inventory Control</h1>
+        <span class="db-live-badge">Live</span>
+      </div>
+      <div class="db-topbar-right">
+        <button class="topbar-btn" aria-label="Notifications"><span class="material-icons-round">notifications</span><span class="badge-dot"></span></button>
+        <div class="topbar-user"><div class="avatar">AD</div><span class="uname">Admin</span></div>
+        <button class="topbar-btn" onclick="window.location.href='../index.html'" title="Kembali ke Landing Page" style="font-size:0.75rem;width:auto;padding:0 10px;gap:4px;"><span class="material-icons-round" style="font-size:1rem;">logout</span> Log out</button>
+      </div>
+    </header>
+
+    <div class="db-layout">
+      <aside class="db-sidebar" id="dbSidebar">
+        <div class="db-sidebar-logo">
+          <div class="logo-row">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">GLOBAL AUTO<small>Admin Panel</small></div>
+          </div>
+        </div>
+        <nav class="db-nav" aria-label="Admin navigation">
+          <div class="db-nav-label">Main</div>
+          <a class="db-nav-item" href="dashboard.html"><span class="nav-icon material-icons-round">dashboard</span>Dashboard</a>
+          <a class="db-nav-item" href="analytics.html"><span class="nav-icon material-icons-round">query_stats</span>Analytics</a>
+          <a class="db-nav-item active" href="inventory.html" aria-current="page"><span class="nav-icon material-icons-round">inventory_2</span>Inventory</a>
+          <a class="db-nav-item" href="stock.html"><span class="nav-icon material-icons-round">swap_horiz</span>Stock In/Out</a>
+          <a class="db-nav-item" href="settings.html"><span class="nav-icon material-icons-round">settings</span>Settings</a>
+        </nav>
+        <div class="db-sidebar-footer">
+          <div class="db-sidebar-user">
+            <div class="user-avatar">AD</div>
+            <div class="user-info">
+              <div class="user-name">Admin User</div>
+              <div class="user-role">Inventory Manager</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="db-main db-inventory-main" id="dbMain">
+        <section class="db-panel inventory-top-panel">
+          <div class="inventory-page-head">
+            <div>
+              <h2 class="inventory-page-title">Inventory</h2>
+              <p class="inventory-page-copy">Kelola data produk statis dengan tampilan yang tetap selaras dengan dashboard utama.</p>
+            </div>
+            <button class="btn-add-product" type="button" onclick="toggleAddProductView(true)"><span class="material-icons-round">add</span>Tambah Produk</button>
+          </div>
+        </section>
+
+        <section class="db-panel inventory-add-panel" id="addProductPanel" hidden>
+          <div class="inventory-add-head">
+            <div>
+              <h2 class="inventory-add-title">Tambah Produk</h2>
+              <p class="inventory-add-copy">Tampilan form statis untuk input produk baru, tetap satu halaman dengan inventory.</p>
+            </div>
+            <div class="inventory-add-actions">
+              <button class="inventory-back-btn" type="button" onclick="toggleAddProductView(false)"><span class="material-icons-round">arrow_back</span>Kembali</button>
+              <button class="btn-add-product" type="button"><span class="material-icons-round">save</span>Simpan</button>
+            </div>
+          </div>
+
+          <div class="inventory-add-grid">
+            <div class="inventory-form-panel">
+              <div class="inventory-form-section-title">Informasi Produk</div>
+              <div class="inventory-form-grid">
+                <label class="inventory-field inventory-field-wide">
+                  <span>Nama Produk</span>
+                  <input type="text" placeholder="Contoh: Pioneer AVH-Z9280BT" />
+                </label>
+                <label class="inventory-field">
+                  <span>SKU</span>
+                  <input type="text" placeholder="PAVH-9280" />
+                </label>
+                <label class="inventory-field">
+                  <span>Kategori</span>
+                  <select>
+                    <option>Audio</option>
+                    <option>Ban</option>
+                    <option>Velg</option>
+                    <option>Sticker</option>
+                  </select>
+                </label>
+                <label class="inventory-field">
+                  <span>Stok</span>
+                  <input type="number" placeholder="0" />
+                </label>
+                <label class="inventory-field">
+                  <span>Harga</span>
+                  <input type="text" placeholder="Rp 0" />
+                </label>
+                <label class="inventory-field">
+                  <span>Status</span>
+                  <select>
+                    <option>Aman</option>
+                    <option>Menipis</option>
+                    <option>Kritis</option>
+                  </select>
+                </label>
+                <label class="inventory-field inventory-field-wide">
+                  <span>Deskripsi</span>
+                  <textarea rows="4" placeholder="Isi detail produk, ukuran, atau catatan stok..."></textarea>
+                </label>
+              </div>
+            </div>
+
+            <aside class="inventory-preview-panel">
+              <div class="inventory-form-section-title">Preview Produk</div>
+              <div class="inventory-preview-card">
+                <div class="inventory-preview-icon">🎵</div>
+                <div class="inventory-preview-name">Nama Produk</div>
+                <div class="inventory-preview-sub">Kategori • SKU</div>
+                <div class="inventory-preview-meta">
+                  <span>Stok 0</span>
+                  <span>Rp 0</span>
+                </div>
+                <div class="inventory-preview-status">● Aman</div>
+              </div>
+              <div class="inventory-preview-note">Tampilan ini hanya mockup visual, tanpa penyimpanan data.</div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="inventory-toolbar-wrap" id="inventoryViewShell">
+          <div class="inventory-toolbar">
+            <div class="db-search inventory-search"><span class="search-icon material-icons-round">search</span><input type="text" placeholder="Cari produk..." id="inventorySearch" oninput="filterTable()" /></div>
+            <select class="db-select inventory-select" id="katFilter" onchange="filterTable()"><option value="">Semua Kategori</option><option value="audio">Audio</option><option value="ban">Ban</option><option value="velg">Velg</option><option value="sticker">Sticker</option></select>
+            <select class="db-select inventory-select" id="statusFilter" onchange="filterTable()"><option value="">Semua Status</option><option value="aman">Aman</option><option value="menipis">Menipis</option><option value="kritis">Kritis</option></select>
+          </div>
+        </section>
+
+        <div class="inventory-content-grid">
+          <section class="db-panel inventory-table-panel">
+            <div class="inventory-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Produk</th>
+                    <th>SKU</th>
+                    <th>Kategori</th>
+                    <th>Stok</th>
+                    <th>Harga</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTbody">
+                <tr data-kat="audio" data-status="aman">
+                  <td><div class="td-product"><div class="td-product-icon">🎵</div><div><div class="td-product-name">Pioneer AVH-Z9280BT</div><div class="td-product-sub">Head Unit Audio Mobil</div></div></div></td>
+                  <td><span class="sku-chip">PAVH-9280</span></td>
+                  <td><span class="kat-chip audio">Audio</span></td>
+                  <td>34</td>
+                  <td class="inventory-price">Rp 150.000</td>
+                  <td><span class="status-badge aman">● Aman</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="audio" data-status="menipis">
+                  <td><div class="td-product"><div class="td-product-icon">🔊</div><div><div class="td-product-name">JBL Club 6500C</div><div class="td-product-sub">Speaker Mobil 6.5"</div></div></div></td>
+                  <td><span class="sku-chip">JCLUB-6500</span></td>
+                  <td><span class="kat-chip audio">Audio</span></td>
+                  <td>12</td>
+                  <td class="inventory-price">Rp 150.000</td>
+                  <td><span class="status-badge menipis">● Menipis</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="ban" data-status="kritis">
+                  <td><div class="td-product"><div class="td-product-icon">🔧</div><div><div class="td-product-name">Michelin Pilot Sport 4</div><div class="td-product-sub">Ban Performa 205/55R16</div></div></div></td>
+                  <td><span class="sku-chip">MPS4-205</span></td>
+                  <td><span class="kat-chip velg">Ban</span></td>
+                  <td>2</td>
+                  <td class="inventory-price">Rp 1.200.000</td>
+                  <td><span class="status-badge kritis">● Kritis</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="velg" data-status="aman">
+                  <td><div class="td-product"><div class="td-product-icon">⚙️</div><div><div class="td-product-name">Enkei RP-F1</div><div class="td-product-sub">Velg Alloy 17" Silver</div></div></div></td>
+                  <td><span class="sku-chip">ENKF1-17</span></td>
+                  <td><span class="kat-chip velg">Velg</span></td>
+                  <td>18</td>
+                  <td class="inventory-price">Rp 2.500.000</td>
+                  <td><span class="status-badge aman">● Aman</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="sticker" data-status="menipis">
+                  <td><div class="td-product"><div class="td-product-icon">✂️</div><div><div class="td-product-name">3M Vinyl Wrap Matt Black</div><div class="td-product-sub">Per Roll 152cm x 20m</div></div></div></td>
+                  <td><span class="sku-chip">STK-004</span></td>
+                  <td><span class="kat-chip sticker">Sticker</span></td>
+                  <td>7</td>
+                  <td class="inventory-price">Rp 980.000</td>
+                  <td><span class="status-badge menipis">● Menipis</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="audio" data-status="aman">
+                  <td><div class="td-product"><div class="td-product-icon">🎼</div><div><div class="td-product-name">Alpine Power Pack</div><div class="td-product-sub">Amplifier 4 Channel</div></div></div></td>
+                  <td><span class="sku-chip">ALP-441</span></td>
+                  <td><span class="kat-chip audio">Audio</span></td>
+                  <td>21</td>
+                  <td class="inventory-price">Rp 2.100.000</td>
+                  <td><span class="status-badge aman">● Aman</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="velg" data-status="aman">
+                  <td><div class="td-product"><div class="td-product-icon">🛞</div><div><div class="td-product-name">Bridgestone Turanza</div><div class="td-product-sub">225/45 R18 Touring</div></div></div></td>
+                  <td><span class="sku-chip">BTR-225</span></td>
+                  <td><span class="kat-chip velg">Ban</span></td>
+                  <td>16</td>
+                  <td class="inventory-price">Rp 1.450.000</td>
+                  <td><span class="status-badge aman">● Aman</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="audio" data-status="aman">
+                  <td><div class="td-product"><div class="td-product-icon">🎚️</div><div><div class="td-product-name">Sony XAV-AX3200</div><div class="td-product-sub">Head Unit Android Auto</div></div></div></td>
+                  <td><span class="sku-chip">SNY-3200</span></td>
+                  <td><span class="kat-chip audio">Audio</span></td>
+                  <td>27</td>
+                  <td class="inventory-price">Rp 3.150.000</td>
+                  <td><span class="status-badge aman">● Aman</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="ban" data-status="menipis">
+                  <td><div class="td-product"><div class="td-product-icon">🛞</div><div><div class="td-product-name">Dunlop Direzza DZ102</div><div class="td-product-sub">205/50 R16 Sport</div></div></div></td>
+                  <td><span class="sku-chip">DZR-205</span></td>
+                  <td><span class="kat-chip velg">Ban</span></td>
+                  <td>9</td>
+                  <td class="inventory-price">Rp 1.050.000</td>
+                  <td><span class="status-badge menipis">● Menipis</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr data-kat="sticker" data-status="aman">
+                  <td><div class="td-product"><div class="td-product-icon">🖤</div><div><div class="td-product-name">Avery Dennison Satin Black</div><div class="td-product-sub">Wrapping Premium 1.52m</div></div></div></td>
+                  <td><span class="sku-chip">AVY-SB</span></td>
+                  <td><span class="kat-chip sticker">Sticker</span></td>
+                  <td>15</td>
+                  <td class="inventory-price">Rp 1.250.000</td>
+                  <td><span class="status-badge aman">● Aman</span></td>
+                  <td><div class="inventory-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">edit</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="inventory-card-grid">
+            <div class="db-panel">
+              <div class="db-panel-header"><div class="db-panel-title">Ringkasan Stok</div></div>
+              <div class="db-panel-body inventory-summary-list">
+                <div class="inventory-summary-item"><span class="inventory-summary-label">Total Produk</span><span class="inventory-summary-value">248 SKU</span></div>
+                <div class="inventory-summary-item"><span class="inventory-summary-label">Produk Aman</span><span class="inventory-summary-value" style="color:#10b981;">182 item</span></div>
+                <div class="inventory-summary-item"><span class="inventory-summary-label">Produk Menipis</span><span class="inventory-summary-value" style="color:#f59e0b;">41 item</span></div>
+                <div class="inventory-summary-item"><span class="inventory-summary-label">Produk Kritis</span><span class="inventory-summary-value" style="color:#ef4444;">14 item</span></div>
+              </div>
+            </div>
+            <div class="db-panel">
+              <div class="db-panel-header"><div class="db-panel-title">Highlight</div></div>
+              <div class="db-panel-body">
+                <div class="inventory-sku-highlight">
+                  <div class="big-number">Rp 847M</div>
+                  <div class="small-text">Nilai stok aktif</div>
+                </div>
+                <div style="height:1rem;"></div>
+                <div class="inventory-summary-item"><span class="inventory-summary-label">Kategori terbanyak</span><span class="inventory-summary-value">Audio</span></div>
+                <div class="inventory-summary-item"><span class="inventory-summary-label">Kecepatan perputaran</span><span class="inventory-summary-value">4.2x</span></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div id="toastMsg" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#10b981;color:#fff;padding:12px 20px;border-radius:10px;font-size:0.85rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.3);transform:translateY(100px);opacity:0;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);z-index:9999;pointer-events:none;"></div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      var sb = document.getElementById('dbSidebar');
+      if (sb) sb.classList.toggle('open');
+    }
+
+    function toggleAddProductView(open) {
+      var panel = document.getElementById('addProductPanel');
+      var view = document.getElementById('inventoryViewShell');
+      var tableGrid = document.querySelector('.inventory-content-grid');
+      if (!panel || !view || !tableGrid) return;
+      panel.hidden = !open;
+      view.hidden = open;
+      tableGrid.hidden = open;
+      panel.classList.toggle('is-open', open);
+    }
+
+    function filterTable() {
+      var search = (document.getElementById('inventorySearch').value || '').toLowerCase();
+      var kat = (document.getElementById('katFilter').value || '').toLowerCase();
+      var status = (document.getElementById('statusFilter').value || '').toLowerCase();
+      var rows = document.querySelectorAll('#inventoryTbody tr');
+      rows.forEach(function(row) {
+        var text = row.textContent.toLowerCase();
+        var rowKat = (row.getAttribute('data-kat') || '').toLowerCase();
+        var rowStatus = (row.getAttribute('data-status') || '').toLowerCase();
+        var show = true;
+        if (search && text.indexOf(search) === -1) show = false;
+        if (kat && rowKat !== kat) show = false;
+        if (status && rowStatus !== status) show = false;
+        row.style.display = show ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

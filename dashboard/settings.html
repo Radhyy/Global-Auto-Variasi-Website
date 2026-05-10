@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Auto Variasi - Settings</title>
+  <meta name="description" content="Pengaturan Sistem Global Auto Variasi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="page-settings" class="dashboard-page page active" style="display:flex;">
+    <header class="db-topbar">
+      <div class="db-topbar-left">
+        <button class="db-menu-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar"><span class="material-icons-round">menu</span></button>
+        <h1>Inventory Control</h1>
+        <span class="db-live-badge">Live</span>
+      </div>
+      <div class="db-topbar-right">
+        <button class="topbar-btn" aria-label="Notifications"><span class="material-icons-round">notifications</span><span class="badge-dot"></span></button>
+        <div class="topbar-user"><div class="avatar">AD</div><span class="uname">Admin</span></div>
+        <button class="topbar-btn" onclick="window.location.href='../index.html'" title="Kembali ke Landing Page" style="font-size:0.75rem;width:auto;padding:0 10px;gap:4px;"><span class="material-icons-round" style="font-size:1rem;">logout</span> Log out</button>
+      </div>
+    </header>
+
+    <div class="db-layout">
+      <aside class="db-sidebar" id="dbSidebar">
+        <div class="db-sidebar-logo">
+          <div class="logo-row">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">GLOBAL AUTO<small>Admin Panel</small></div>
+          </div>
+        </div>
+        <nav class="db-nav" aria-label="Admin navigation">
+          <div class="db-nav-label">Main</div>
+          <a class="db-nav-item" href="dashboard.html"><span class="nav-icon material-icons-round">dashboard</span>Dashboard</a>
+          <a class="db-nav-item" href="analytics.html"><span class="nav-icon material-icons-round">query_stats</span>Analytics</a>
+          <a class="db-nav-item" href="inventory.html"><span class="nav-icon material-icons-round">inventory_2</span>Inventory</a>
+          <a class="db-nav-item" href="stock.html"><span class="nav-icon material-icons-round">swap_horiz</span>Stock In/Out</a>
+          <a class="db-nav-item active" href="settings.html" aria-current="page"><span class="nav-icon material-icons-round">settings</span>Settings</a>
+        </nav>
+        <div class="db-sidebar-footer">
+          <div class="db-sidebar-user">
+            <div class="user-avatar">AD</div>
+            <div class="user-info">
+              <div class="user-name">Admin User</div>
+              <div class="user-role">Inventory Manager</div>
+            </div>
+            <button class="user-logout" title="Log out" onclick="window.location.href='../index.html'">
+              <span class="material-icons-round">logout</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="db-main settings-main" id="dbMain">
+        <!-- Header Panel -->
+        <section class="db-panel settings-hero-panel">
+          <div class="settings-hero-head">
+            <div>
+              <h2 class="settings-title">Pengaturan Akun & Sistem</h2>
+              <p class="settings-copy">Kelola data profil pengguna, preferensi aplikasi, dan keamanan di sini.</p>
+            </div>
+            <div class="settings-hero-actions">
+              <button class="settings-save-btn" type="button"><span class="material-icons-round">save</span>Simpan Perubahan</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Main Split Panel Grid -->
+        <div class="settings-grid">
+          
+          <!-- Left: Profile Panel -->
+          <div class="db-panel settings-panel">
+            <div class="db-panel-header">
+              <h3 class="db-panel-title">Profil Pengguna</h3>
+            </div>
+            <div class="settings-panel-content">
+              <div class="settings-profile-photo-wrapper">
+                <div class="settings-profile-photo">
+                  <img src="https://ui-avatars.com/api/?name=Admin&background=E50914&color=fff&size=120" alt="Foto Profil" />
+                  <button class="avatar-edit-btn" aria-label="Ganti Foto" type="button">
+                    <span class="material-icons-round">camera_alt</span>
+                  </button>
+                </div>
+                <div class="profile-photo-info">
+                  <strong>Foto Profil Administrator</strong>
+                  <p>Resolusi disarankan: 256x256px.</p>
+                  <p>Maksimum ukuran file: 2MB.</p>
+                </div>
+              </div>
+
+              <div class="setting-form-grid">
+                <div class="setting-field">
+                  <label>Nama Lengkap</label>
+                  <input type="text" value="Admin Global Auto" />
+                </div>
+                <div class="setting-field">
+                  <label>Email</label>
+                  <input type="email" value="admin@globalauto.com" />
+                </div>
+                <div class="setting-field">
+                  <label>Nomor Telepon</label>
+                  <input type="tel" value="081234567890" />
+                </div>
+                <div class="setting-field">
+                  <label>Peran (Role)</label>
+                  <input type="text" value="Administrator" disabled />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: System & Security Panel -->
+          <div class="db-panel settings-panel">
+            <div class="db-panel-header">
+              <h3 class="db-panel-title">Keamanan & Preferensi</h3>
+            </div>
+            <div class="settings-panel-content">
+              
+              <!-- Security Form -->
+              <div class="setting-form-grid single-col">
+                <div class="setting-field">
+                  <label>Password Saat Ini</label>
+                  <input type="password" placeholder="Masukkan password lama" />
+                </div>
+                <div class="setting-field">
+                  <label>Password Baru</label>
+                  <input type="password" placeholder="Minimal 8 karakter" />
+                </div>
+                <div class="setting-field">
+                  <label>Konfirmasi Password Baru</label>
+                  <input type="password" placeholder="Ulangi password baru" />
+                </div>
+              </div>
+              
+              <hr class="settings-divider" />
+              
+              <!-- System Toggles -->
+              <div class="settings-toggle-group">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <strong>Pemberitahuan Otomatis</strong>
+                    <p>Terima notifikasi email saat stok barang kritis atau habis.</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <strong>Aktivasi Mode Malam Penuh</strong>
+                    <p>Paksa kontras maksimal OLED di seluruh tampilan panel.</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../main.js"></script>
+  <script>
+    function toggleSidebar() {
+      const dbLayout = document.querySelector('.db-layout');
+      if (dbLayout) {
+        dbLayout.classList.toggle('sidebar-minimized');
+      }
+    }
+  </script>
+</body>
+</html>

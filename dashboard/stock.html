@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Auto Variasi - Stock In/Out</title>
+  <meta name="description" content="Stock in/out Global Auto Variasi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="page-stock" class="dashboard-page page active" style="display:flex;">
+    <header class="db-topbar">
+      <div class="db-topbar-left">
+        <button class="db-menu-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar"><span class="material-icons-round">menu</span></button>
+        <h1>Inventory Control</h1>
+        <span class="db-live-badge">Live</span>
+      </div>
+      <div class="db-topbar-right">
+        <button class="topbar-btn" aria-label="Notifications"><span class="material-icons-round">notifications</span><span class="badge-dot"></span></button>
+        <div class="topbar-user"><div class="avatar">AD</div><span class="uname">Admin</span></div>
+        <button class="topbar-btn" onclick="window.location.href='../index.html'" title="Kembali ke Landing Page" style="font-size:0.75rem;width:auto;padding:0 10px;gap:4px;"><span class="material-icons-round" style="font-size:1rem;">logout</span> Log out</button>
+      </div>
+    </header>
+
+    <div class="db-layout">
+      <aside class="db-sidebar" id="dbSidebar">
+        <div class="db-sidebar-logo">
+          <div class="logo-row">
+            <div class="logo-icon">G</div>
+            <div class="logo-text">GLOBAL AUTO<small>Admin Panel</small></div>
+          </div>
+        </div>
+        <nav class="db-nav" aria-label="Admin navigation">
+          <div class="db-nav-label">Main</div>
+          <a class="db-nav-item" href="dashboard.html"><span class="nav-icon material-icons-round">dashboard</span>Dashboard</a>
+          <a class="db-nav-item" href="analytics.html"><span class="nav-icon material-icons-round">query_stats</span>Analytics</a>
+          <a class="db-nav-item" href="inventory.html"><span class="nav-icon material-icons-round">inventory_2</span>Inventory</a>
+          <a class="db-nav-item active" href="stock.html" aria-current="page"><span class="nav-icon material-icons-round">swap_horiz</span>Stock In/Out</a>
+          <a class="db-nav-item" href="settings.html"><span class="nav-icon material-icons-round">settings</span>Settings</a>
+        </nav>
+        <div class="db-sidebar-footer">
+          <div class="db-sidebar-user">
+            <div class="user-avatar">AD</div>
+            <div class="user-info">
+              <div class="user-name">Admin User</div>
+              <div class="user-role">Inventory Manager</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="db-main stock-main" id="dbMain">
+        <section class="db-panel stock-hero-panel">
+          <div class="stock-hero-head">
+            <div>
+              <h2 class="stock-title">Stock In/Out</h2>
+              <p class="stock-copy">Kelola barang masuk dan keluar lewat dua form jendela, lalu pantau riwayat transaksi di bawahnya.</p>
+            </div>
+            <div class="stock-hero-actions">
+              <button class="stock-action-btn stock-action-in" type="button" onclick="toggleStockModal('in')"><span class="material-icons-round">south</span>Barang Masuk</button>
+              <button class="stock-action-btn stock-action-out" type="button" onclick="toggleStockModal('out')"><span class="material-icons-round">north</span>Barang Keluar</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="db-panel stock-summary-row">
+          <div class="stock-summary-card">
+            <div class="stock-summary-value">1,247</div>
+            <div class="stock-summary-label">Total Barang Masuk</div>
+          </div>
+          <div class="stock-summary-card">
+            <div class="stock-summary-value">892</div>
+            <div class="stock-summary-label">Total Barang Keluar</div>
+          </div>
+          <div class="stock-summary-card">
+            <div class="stock-summary-value">47</div>
+            <div class="stock-summary-label">Transaksi Hari Ini</div>
+          </div>
+          <div class="stock-summary-card">
+            <div class="stock-summary-value">6,500</div>
+            <div class="stock-summary-label">Produk Paling Aktif</div>
+          </div>
+        </div>
+
+        <section class="db-panel stock-table-panel">
+          <div class="db-panel-header stock-table-head">
+            <div class="db-panel-title">Riwayat Transaksi Stok</div>
+            <div class="db-search-filter stock-filter-bar">
+              <div class="db-search"><span class="search-icon material-icons-round">search</span><input type="text" placeholder="Cari transaksi..." /></div>
+              <select class="db-select"><option>Semua Jenis</option><option>Barang Masuk</option><option>Barang Keluar</option></select>
+              <input class="stock-date" type="date" />
+            </div>
+          </div>
+          <div class="stock-table-wrap">
+            <table class="stock-history-table">
+              <thead>
+                <tr>
+                  <th>ID Transaksi</th>
+                  <th>Jenis</th>
+                  <th>Produk</th>
+                  <th>Qty</th>
+                  <th>Tanggal</th>
+                  <th>Admin</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="stock-id">TX-2408</span></td>
+                  <td><span class="stock-type in">Masuk</span></td>
+                  <td>Pioneer AVH-Z9280BT</td>
+                  <td>24</td>
+                  <td>10 Mei 2026</td>
+                  <td>Admin A</td>
+                  <td><span class="status-badge aman">Selesai</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr>
+                  <td><span class="stock-id">TX-2407</span></td>
+                  <td><span class="stock-type out">Keluar</span></td>
+                  <td>JBL Club 6500C</td>
+                  <td>8</td>
+                  <td>10 Mei 2026</td>
+                  <td>Admin A</td>
+                  <td><span class="status-badge menipis">Selesai</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr>
+                  <td><span class="stock-id">TX-2406</span></td>
+                  <td><span class="stock-type in">Masuk</span></td>
+                  <td>3M Vinyl Wrap Matt Black</td>
+                  <td>15</td>
+                  <td>09 Mei 2026</td>
+                  <td>Admin B</td>
+                  <td><span class="status-badge aman">Selesai</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr>
+                  <td><span class="stock-id">TX-2405</span></td>
+                  <td><span class="stock-type out">Keluar</span></td>
+                  <td>Michelin Pilot Sport 4</td>
+                  <td>4</td>
+                  <td>09 Mei 2026</td>
+                  <td>Admin C</td>
+                  <td><span class="status-badge kritis">Diproses</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr>
+                  <td><span class="stock-id">TX-2404</span></td>
+                  <td><span class="stock-type in">Masuk</span></td>
+                  <td>Enkei RP-F1</td>
+                  <td>12</td>
+                  <td>08 Mei 2026</td>
+                  <td>Admin B</td>
+                  <td><span class="status-badge aman">Selesai</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr>
+                  <td><span class="stock-id">TX-2403</span></td>
+                  <td><span class="stock-type out">Keluar</span></td>
+                  <td>Alpine Power Pack</td>
+                  <td>3</td>
+                  <td>08 Mei 2026</td>
+                  <td>Admin A</td>
+                  <td><span class="status-badge menipis">Selesai</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr>
+                  <td><span class="stock-id">TX-2402</span></td>
+                  <td><span class="stock-type in">Masuk</span></td>
+                  <td>Bridgestone Turanza</td>
+                  <td>18</td>
+                  <td>07 Mei 2026</td>
+                  <td>Admin C</td>
+                  <td><span class="status-badge aman">Selesai</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+                <tr>
+                  <td><span class="stock-id">TX-2401</span></td>
+                  <td><span class="stock-type out">Keluar</span></td>
+                  <td>Sony XAV-AX3200</td>
+                  <td>2</td>
+                  <td>07 Mei 2026</td>
+                  <td>Admin A</td>
+                  <td><span class="status-badge aman">Selesai</span></td>
+                  <td><div class="stock-row-actions"><button class="inventory-action-btn" type="button"><span class="material-icons-round">visibility</span></button><button class="inventory-action-btn" type="button"><span class="material-icons-round">delete</span></button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <section class="stock-modal" id="stockModal" hidden aria-hidden="true">
+      <div class="stock-modal-backdrop" onclick="toggleStockModal('close')"></div>
+      <div class="stock-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="stockModalTitle">
+        <div class="stock-modal-head">
+          <div>
+            <h3 class="stock-modal-title" id="stockModalTitle">Barang Masuk</h3>
+            <p class="stock-modal-copy">Jendela input statis untuk transaksi stock in/out.</p>
+          </div>
+          <button class="inventory-back-btn" type="button" onclick="toggleStockModal('close')"><span class="material-icons-round">close</span>Tutup</button>
+        </div>
+
+        <div class="stock-modal-grid">
+          <div class="stock-form-panel">
+            <div class="inventory-form-section-title" id="stockFormSectionTitle">Form Barang Masuk</div>
+            <div class="inventory-form-grid">
+              <label class="inventory-field inventory-field-wide">
+                <span id="stockProductLabel">Produk</span>
+                <select id="stockProductSelect">
+                  <option>Pioneer AVH-Z9280BT</option>
+                  <option>JBL Club 6500C</option>
+                  <option>Michelin Pilot Sport 4</option>
+                  <option>Enkei RP-F1</option>
+                </select>
+              </label>
+              <label class="inventory-field">
+                <span id="stockQtyLabel">Jumlah</span>
+                <input type="number" placeholder="0" />
+              </label>
+              <label class="inventory-field">
+                <span id="stockPartyLabel">Supplier</span>
+                <input type="text" placeholder="Nama supplier" />
+              </label>
+              <label class="inventory-field inventory-field-wide">
+                <span>Catatan</span>
+                <textarea rows="4" placeholder="Catatan tambahan..."></textarea>
+              </label>
+            </div>
+          </div>
+
+          <aside class="stock-preview-panel">
+            <div class="inventory-form-section-title">Preview</div>
+            <div class="stock-preview-card" id="stockPreviewCard">
+              <div class="stock-preview-kicker">Barang Masuk</div>
+              <div class="stock-preview-name">Pioneer AVH-Z9280BT</div>
+              <div class="stock-preview-meta">24 unit • Supplier: Global Part</div>
+              <div class="stock-preview-badge in">+ Tambah stok</div>
+            </div>
+            <div class="inventory-preview-note">Form ini hanya tampilan. Tidak ada proses simpan atau pengurangan stok.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  <script>
+    var stockModalMode = 'in';
+
+    function toggleSidebar() {
+      var sb = document.getElementById('dbSidebar');
+      if (sb) sb.classList.toggle('open');
+    }
+
+    function toggleStockModal(mode) {
+      var modal = document.getElementById('stockModal');
+      if (!modal) return;
+      if (mode === 'close') {
+        modal.hidden = true;
+        modal.setAttribute('aria-hidden', 'true');
+        return;
+      }
+      stockModalMode = mode === 'out' ? 'out' : 'in';
+      var title = document.getElementById('stockModalTitle');
+      var sectionTitle = document.getElementById('stockFormSectionTitle');
+      var productLabel = document.getElementById('stockProductLabel');
+      var qtyLabel = document.getElementById('stockQtyLabel');
+      var partyLabel = document.getElementById('stockPartyLabel');
+      var preview = document.getElementById('stockPreviewCard');
+      var btn = document.querySelector('#stockModal .stock-modal-dialog .stock-preview-badge');
+
+      if (stockModalMode === 'out') {
+        title.textContent = 'Barang Keluar';
+        sectionTitle.textContent = 'Form Barang Keluar';
+        productLabel.textContent = 'Produk';
+        qtyLabel.textContent = 'Jumlah';
+        partyLabel.textContent = 'Tujuan / Distributor';
+        preview.innerHTML = '<div class="stock-preview-kicker">Barang Keluar</div><div class="stock-preview-name">JBL Club 6500C</div><div class="stock-preview-meta">8 unit • Tujuan: Toko/Distributor</div><div class="stock-preview-badge out">- Kurangi stok</div>';
+      } else {
+        title.textContent = 'Barang Masuk';
+        sectionTitle.textContent = 'Form Barang Masuk';
+        productLabel.textContent = 'Produk';
+        qtyLabel.textContent = 'Jumlah';
+        partyLabel.textContent = 'Supplier';
+        preview.innerHTML = '<div class="stock-preview-kicker">Barang Masuk</div><div class="stock-preview-name">Pioneer AVH-Z9280BT</div><div class="stock-preview-meta">24 unit • Supplier: Global Part</div><div class="stock-preview-badge in">+ Tambah stok</div>';
+      }
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+    }
+  </script>
+  </div>
+</body>
+</html>
