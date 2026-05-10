@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Auto Variasi —専門家によるカスタム車両</title>
+  <meta name="description" content="Global Auto Variasi — Solusi terlengkap untuk variasi dan aksesori kendaraan Anda. Audio, Body Kit, Velg, Interior, Lampu, dan Cutting Sticker." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════════════
+     ADMIN DASHBOARD PAGE
+═══════════════════════════════════════════ -->
+<div id="page-dashboard" class="dashboard-page page active" style="display: flex;">
+
+  <!-- Topbar -->
+  <header class="db-topbar">
+    <div class="db-topbar-left">
+      <button class="db-menu-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar"><span class="material-icons-round">menu</span></button>
+      <h1>Inventory Control</h1>
+      <span class="db-live-badge">Live</span>
+    </div>
+    <div class="db-topbar-right">
+      <button class="topbar-btn" aria-label="Notifications">
+        <span class="material-icons-round">notifications</span>
+        <span class="badge-dot"></span>
+      </button>
+      <div class="topbar-user" onclick="">
+        <div class="avatar">AD</div>
+        <span class="uname">Admin</span>
+      </div>
+      <button class="topbar-btn" onclick="window.location.href='../index.html'" title="Kembali ke Landing Page" style="font-size:0.75rem;width:auto;padding:0 10px;gap:4px;">
+        <span class="material-icons-round" style="font-size: 1rem;">logout</span> Log out
+      </button>
+    </div>
+  </header>
+
+  <div class="db-layout">
+    <!-- Sidebar -->
+    <aside class="db-sidebar" id="dbSidebar">
+      <div class="db-sidebar-logo">
+        <div class="logo-row">
+          <div class="logo-icon">G</div>
+          <div class="logo-text">
+            GLOBAL AUTO
+            <small>Admin Panel</small>
+          </div>
+        </div>
+      </div>
+      <nav class="db-nav" aria-label="Admin navigation">
+        <div class="db-nav-label">Main</div>
+        <div class="db-nav-item active" onclick="switchDashTab(this, 'tab-dashboard')">
+          <span class="nav-icon material-icons-round">dashboard</span>
+          Dashboard
+        </div>
+        
+      </nav>
+      <div class="db-sidebar-footer">
+        <div class="db-sidebar-user">
+          <div class="user-avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin User</div>
+            <div class="user-role">Inventory Manager</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="db-main" id="dbMain">
+
+      <!-- TAB: DASHBOARD -->
+      <div id="tab-dashboard" class="db-tab-content">
+        <!-- Stats Row -->
+        <div class="db-stats-row">
+          <div class="db-stat-card" style="--accent-color:#6366f1;--icon-bg:rgba(99,102,241,0.12);--icon-color:#818cf8;">
+            <div class="stat-top">
+              <div class="stat-icon material-icons-round">inventory_2</div>
+              <span class="stat-change up">▲ 12%</span>
+            </div>
+            <div class="stat-val">248</div>
+            <div class="stat-label">Total SKU</div>
+          </div>
+          <div class="db-stat-card" style="--accent-color:#10b981;--icon-bg:rgba(16,185,129,0.12);--icon-color:#10b981;">
+            <div class="stat-top">
+              <div class="stat-icon material-icons-round">payments</div>
+              <span class="stat-change up">▲ 8.3%</span>
+            </div>
+            <div class="stat-val">Rp 847M</div>
+            <div class="stat-label">Nilai Stok</div>
+          </div>
+          <div class="db-stat-card" style="--accent-color:#f59e0b;--icon-bg:rgba(245,158,11,0.12);--icon-color:#f59e0b;">
+            <div class="stat-top">
+              <div class="stat-icon material-icons-round">warning</div>
+              <span class="stat-change down">▼ 3 item</span>
+            </div>
+            <div class="stat-val">14</div>
+            <div class="stat-label">Stok Menipis</div>
+          </div>
+          <div class="db-stat-card" style="--accent-color:#e50914;--icon-bg:rgba(229,9,20,0.12);--icon-color:#e50914;">
+            <div class="stat-top">
+              <div class="stat-icon material-icons-round">autorenew</div>
+              <span class="stat-change neutral">Stabil</span>
+            </div>
+            <div class="stat-val">4.2x</div>
+            <div class="stat-label">Perputaran Stok</div>
+          </div>
+        </div>
+
+        <!-- Middle Row: Table + Right Panel -->
+        <div class="db-mid-row">
+          <!-- Inventory Table Panel -->
+          <div class="db-panel">
+            <div class="db-panel-header">
+              <div class="db-panel-title">Daftar Inventori</div>
+              <div class="db-search-filter">
+                <div class="db-search">
+                  <span class="search-icon material-icons-round">search</span>
+                  <input type="text" placeholder="Cari produk..." id="inventorySearch" oninput="filterTable()" />
+                </div>
+                <select class="db-select" id="katFilter" onchange="filterTable()">
+                  <option value="">Semua Kategori</option>
+                  <option value="audio">Audio</option>
+                  <option value="body">Body Kit</option>
+                  <option value="velg">Velg &amp; Ban</option>
+                  <option value="interior">Interior</option>
+                  <option value="lampu">Lampu</option>
+                  <option value="sticker">Cutting Sticker</option>
+                </select>
+                <select class="db-select" id="statusFilter" onchange="filterTable()">
+                  <option value="">Semua Status</option>
+                  <option value="aman">Aman</option>
+                  <option value="menipis">Menipis</option>
+                  <option value="kritis">Kritis</option>
+                </select>
+              </div>
+            </div>
+            <div class="db-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Produk</th>
+                    <th>SKU</th>
+                    <th>Kategori</th>
+                    <th style="min-width:130px;">Stok</th>
+                    <th>Min</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTbody">
+                  <tr data-kat="audio" data-status="aman">
+                    <td><div class="td-product"><div class="td-product-icon">🎵</div><div><div class="td-product-name">Pioneer AVH-Z9280BT</div><div class="td-product-sub">Head Unit 9"</div></div></div></td>
+                    <td><span class="sku-chip">AUD-001</span></td>
+                    <td><span class="kat-chip audio">Audio</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>24</span><span>/ 50</span></div><div class="stock-bar-track"><div class="stock-bar-fill good" style="width:48%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">10</td>
+                    <td><span class="status-badge aman">Aman</span></td>
+                  </tr>
+                  <tr data-kat="audio" data-status="menipis">
+                    <td><div class="td-product"><div class="td-product-icon">🔊</div><div><div class="td-product-name">JBL Club 6500C</div><div class="td-product-sub">Component Speaker</div></div></div></td>
+                    <td><span class="sku-chip">AUD-002</span></td>
+                    <td><span class="kat-chip audio">Audio</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>6</span><span>/ 40</span></div><div class="stock-bar-track"><div class="stock-bar-fill warn" style="width:15%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">8</td>
+                    <td><span class="status-badge menipis">Menipis</span></td>
+                  </tr>
+                  <tr data-kat="body" data-status="aman">
+                    <td><div class="td-product"><div class="td-product-icon">🚗</div><div><div class="td-product-name">TRD Sportivo Body Kit</div><div class="td-product-sub">Full Set Innova Reborn</div></div></div></td>
+                    <td><span class="sku-chip">BDY-001</span></td>
+                    <td><span class="kat-chip body">Body Kit</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>18</span><span>/ 25</span></div><div class="stock-bar-track"><div class="stock-bar-fill good" style="width:72%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">5</td>
+                    <td><span class="status-badge aman">Aman</span></td>
+                  </tr>
+                  <tr data-kat="velg" data-status="aman">
+                    <td><div class="td-product"><div class="td-product-icon">⚙️</div><div><div class="td-product-name">Enkei RP-F1 17"</div><div class="td-product-sub">Velg Racing 4x100</div></div></div></td>
+                    <td><span class="sku-chip">VLG-001</span></td>
+                    <td><span class="kat-chip velg">Velg &amp; Ban</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>32</span><span>/ 60</span></div><div class="stock-bar-track"><div class="stock-bar-fill good" style="width:53%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">12</td>
+                    <td><span class="status-badge aman">Aman</span></td>
+                  </tr>
+                  <tr data-kat="velg" data-status="kritis">
+                    <td><div class="td-product"><div class="td-product-icon">🔧</div><div><div class="td-product-name">Michelin Pilot Sport 4</div><div class="td-product-sub">225/45 R18</div></div></div></td>
+                    <td><span class="sku-chip">BAN-003</span></td>
+                    <td><span class="kat-chip velg">Velg &amp; Ban</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>3</span><span>/ 30</span></div><div class="stock-bar-track"><div class="stock-bar-fill crit" style="width:10%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">8</td>
+                    <td><span class="status-badge kritis">Kritis</span></td>
+                  </tr>
+                  <tr data-kat="interior" data-status="aman">
+                    <td><div class="td-product"><div class="td-product-icon">💺</div><div><div class="td-product-name">Jok Nappa Leather Custom</div><div class="td-product-sub">Set Full Mobil</div></div></div></td>
+                    <td><span class="sku-chip">INT-001</span></td>
+                    <td><span class="kat-chip interior">Interior</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>15</span><span>/ 20</span></div><div class="stock-bar-track"><div class="stock-bar-fill good" style="width:75%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">4</td>
+                    <td><span class="status-badge aman">Aman</span></td>
+                  </tr>
+                  <tr data-kat="lampu" data-status="menipis">
+                    <td><div class="td-product"><div class="td-product-icon">💡</div><div><div class="td-product-name">Hella Projector LED H7</div><div class="td-product-sub">Headlamp Universal</div></div></div></td>
+                    <td><span class="sku-chip">LMP-002</span></td>
+                    <td><span class="kat-chip lampu">Lampu</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>5</span><span>/ 30</span></div><div class="stock-bar-track"><div class="stock-bar-fill warn" style="width:17%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">8</td>
+                    <td><span class="status-badge menipis">Menipis</span></td>
+                  </tr>
+                  <tr data-kat="sticker" data-status="aman">
+                    <td><div class="td-product"><div class="td-product-icon">✂️</div><div><div class="td-product-name">3M Vinyl Wrap Matt Black</div><div class="td-product-sub">Per Roll 152cm x 20m</div></div></div></td>
+                    <td><span class="sku-chip">STK-001</span></td>
+                    <td><span class="kat-chip sticker">Cutting Sticker</span></td>
+                    <td class="stock-cell"><div class="stock-bar-wrap"><div class="stock-bar-info"><span>28</span><span>/ 45</span></div><div class="stock-bar-track"><div class="stock-bar-fill good" style="width:62%"></div></div></div></td>
+                    <td style="color:rgba(255,255,255,0.4);font-size:0.78rem;">10</td>
+                    <td><span class="status-badge aman">Aman</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right Panel -->
+          <div class="db-right-panel">
+            <!-- Smart Alerts -->
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <span class="db-panel-title"><span class="material-icons-round" style="vertical-align:bottom;font-size:1.1rem;color:#f59e0b;margin-right:4px;">smart_toy</span> Smart Alerts</span>
+                <span class="stat-change down">3 aktif</span>
+              </div>
+              <div class="db-panel-body" style="padding:1rem;">
+                <div class="alert-item">
+                  <div class="alert-icon crit"><span class="material-icons-round">emergency</span></div>
+                  <div class="alert-text"><strong>Stok Kritis!</strong>Michelin PS4 225/45 R18 tersisa 3 unit — di bawah minimum.</div>
+                </div>
+                <div class="alert-item" style="margin-top:0.6rem;">
+                  <div class="alert-icon warn"><span class="material-icons-round">warning</span></div>
+                  <div class="alert-text"><strong>Stok Menipis</strong>JBL Club 6500C &amp; Hella H7 mendekati batas minimum.</div>
+                </div>
+                <div class="alert-item" style="margin-top:0.6rem;">
+                  <div class="alert-icon info"><span class="material-icons-round" style="color:inherit">info</span></div>
+                  <div class="alert-text"><strong>Reorder Disarankan</strong>4 item perlu segera di-reorder minggu ini.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Statistik Hari Ini -->
+            <div class="db-panel">
+              <div class="db-panel-header">
+                <span class="db-panel-title"><span class="material-icons-round" style="vertical-align:bottom;font-size:1.1rem;margin-right:4px;">calendar_today</span> Statistik Hari Ini</span>
+              </div>
+              <div class="db-panel-body">
+                <div class="stat-today-row">
+                  <div class="stat-today-item">
+                    <span class="stat-today-label"><span class="material-icons-round" style="font-size:1rem;vertical-align:middle;margin-right:2px">move_to_inbox</span> Barang Masuk</span>
+                    <span class="stat-today-val good">+24 unit</span>
+                  </div>
+                  <div class="stat-today-item">
+                    <span class="stat-today-label"><span class="material-icons-round" style="font-size:1rem;vertical-align:middle;margin-right:2px">outbox</span> Barang Keluar</span>
+                    <span class="stat-today-val red">-18 unit</span>
+                  </div>
+                  <div class="stat-today-item">
+                    <span class="stat-today-label"><span class="material-icons-round" style="font-size:1rem;vertical-align:middle;margin-right:2px">sync</span> Transaksi</span>
+                    <span class="stat-today-val">12</span>
+                  </div>
+                  <div class="stat-today-item">
+                    <span class="stat-today-label"><span class="material-icons-round" style="font-size:1rem;vertical-align:middle;margin-right:2px">business_center</span> Nilai Transaksi</span>
+                    <span class="stat-today-val good">Rp 28.4Jt</span>
+                  </div>
+                  <div class="stat-today-item">
+                    <span class="stat-today-label"><span class="material-icons-round" style="font-size:1rem;vertical-align:middle;margin-right:2px">warning</span> Item Menipis</span>
+                    <span class="stat-today-val warn">14 item</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="db-bottom-row">
+          <!-- Distribusi Kategori -->
+          <div class="db-panel">
+            <div class="db-panel-header">
+              <span class="db-panel-title"><span class="material-icons-round" style="vertical-align:bottom;font-size:1.1rem;margin-right:4px;">pie_chart</span> Distribusi Kategori</span>
+            </div>
+            <div class="db-panel-body">
+              <div class="cat-dist-item">
+                <div class="cat-dist-header"><span class="cat-dist-name"><span class="material-icons-round" style="font-size:1.1rem;vertical-align:middle;margin-right:4px;color:#818cf8">music_note</span> Audio &amp; Head Unit</span><span class="cat-dist-pct">28%</span></div>
+                <div class="cat-prog-track"><div class="cat-prog-fill" style="width:28%;height:100%;border-radius:3px;background:#818cf8;"></div></div>
+              </div>
+              <div class="cat-dist-item">
+                <div class="cat-dist-header"><span class="cat-dist-name"><span class="material-icons-round" style="font-size:1.1rem;vertical-align:middle;margin-right:4px;color:#fbbf24">airport_shuttle</span> Body Kit &amp; Spoiler</span><span class="cat-dist-pct">18%</span></div>
+                <div class="cat-prog-track"><div class="cat-prog-fill" style="width:18%;height:100%;border-radius:3px;background:#fbbf24;"></div></div>
+              </div>
+              <div class="cat-dist-item">
+                <div class="cat-dist-header"><span class="cat-dist-name"><span class="material-icons-round" style="font-size:1.1rem;vertical-align:middle;margin-right:4px;color:#2dd4bf">settings</span> Velg &amp; Ban</span><span class="cat-dist-pct">22%</span></div>
+                <div class="cat-prog-track"><div class="cat-prog-fill" style="width:22%;height:100%;border-radius:3px;background:#2dd4bf;"></div></div>
+              </div>
+              <div class="cat-dist-item">
+                <div class="cat-dist-header"><span class="cat-dist-name"><span class="material-icons-round" style="font-size:1.1rem;vertical-align:middle;margin-right:4px;color:#c084fc">event_seat</span> Interior &amp; Jok</span><span class="cat-dist-pct">15%</span></div>
+                <div class="cat-prog-track"><div class="cat-prog-fill" style="width:15%;height:100%;border-radius:3px;background:#c084fc;"></div></div>
+              </div>
+              <div class="cat-dist-item">
+                <div class="cat-dist-header"><span class="cat-dist-name"><span class="material-icons-round" style="font-size:1.1rem;vertical-align:middle;margin-right:4px;color:#fde68a">lightbulb</span> Lampu &amp; LED</span><span class="cat-dist-pct">10%</span></div>
+                <div class="cat-prog-track"><div class="cat-prog-fill" style="width:10%;height:100%;border-radius:3px;background:#fde68a;"></div></div>
+              </div>
+              <div class="cat-dist-item">
+                <div class="cat-dist-header"><span class="cat-dist-name"><span class="material-icons-round" style="font-size:1.1rem;vertical-align:middle;margin-right:4px;color:#f9a8d4">content_cut</span> Cutting Sticker</span><span class="cat-dist-pct">7%</span></div>
+                <div class="cat-prog-track"><div class="cat-prog-fill" style="width:7%;height:100%;border-radius:3px;background:#f9a8d4;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saran Reorder AI -->
+          <div class="db-panel">
+            <div class="db-panel-header">
+              <span class="db-panel-title">Saran Reorder</span>
+              <span class="ai-label"><span class="material-icons-round" style="font-size:1rem;vertical-align:middle;margin-right:2px">auto_awesome</span> AI</span>
+            </div>
+            <div class="db-panel-body">
+              <div class="reorder-item">
+                <div class="reorder-icon"><span class="material-icons-round">build</span></div>
+                <div class="reorder-info">
+                  <div class="reorder-name">Michelin PS4 225/45 R18</div>
+                  <div class="reorder-detail">Kritis — sisa 3 unit, min 8</div>
+                </div>
+                <button class="btn-reorder" onclick="showOrderToast('Michelin PS4')">Order</button>
+              </div>
+              <div class="reorder-item">
+                <div class="reorder-icon"><span class="material-icons-round">volume_up</span></div>
+                <div class="reorder-info">
+                  <div class="reorder-name">JBL Club 6500C</div>
+                  <div class="reorder-detail">Menipis — sisa 6 unit, min 8</div>
+                </div>
+                <button class="btn-reorder" onclick="showOrderToast('JBL Club 6500C')">Order</button>
+              </div>
+              <div class="reorder-item">
+                <div class="reorder-icon"><span class="material-icons-round">lightbulb</span></div>
+                <div class="reorder-info">
+                  <div class="reorder-name">Hella Projector H7</div>
+                  <div class="reorder-detail">Menipis — sisa 5 unit, min 8</div>
+                </div>
+                <button class="btn-reorder" onclick="showOrderToast('Hella H7')">Order</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergerakan Stok Chart -->
+          <div class="db-panel">
+            <div class="db-panel-header">
+              <span class="db-panel-title"><span class="material-icons-round" style="vertical-align:bottom;font-size:1.1rem;margin-right:4px;">show_chart</span> Pergerakan Stok</span>
+              <span class="sku-chip">7 hari</span>
+            </div>
+            <div class="db-panel-body">
+              <div style="display:flex;gap:1rem;margin-bottom:0.75rem;">
+                <div style="display:flex;align-items:center;gap:5px;font-size:0.72rem;color:rgba(255,255,255,0.5);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span>Masuk
+                </div>
+                <div style="display:flex;align-items:center;gap:5px;font-size:0.72rem;color:rgba(255,255,255,0.5);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;"></span>Keluar
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <svg viewBox="0 0 280 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="gIn" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+                      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="gOut" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#e50914" stop-opacity="0.25"/>
+                      <stop offset="100%" stop-color="#e50914" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Grid lines -->
+                  <line x1="0" y1="30" x2="280" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                  <line x1="0" y1="60" x2="280" y2="60" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                  <line x1="0" y1="90" x2="280" y2="90" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                  <!-- Area Masuk -->
+                  <path d="M0,80 L40,60 L80,45 L120,55 L160,35 L200,50 L240,30 L280,40 L280,120 L0,120 Z" fill="url(#gIn)"/>
+                  <!-- Area Keluar -->
+                  <path d="M0,90 L40,85 L80,70 L120,80 L160,65 L200,75 L240,60 L280,68 L280,120 L0,120 Z" fill="url(#gOut)"/>
+                  <!-- Line Masuk -->
+                  <polyline points="0,80 40,60 80,45 120,55 160,35 200,50 240,30 280,40" fill="none" stroke="#10b981" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                  <!-- Line Keluar -->
+                  <polyline points="0,90 40,85 80,70 120,80 160,65 200,75 240,60 280,68" fill="none" stroke="#e50914" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                  <!-- X labels -->
+                  <text x="0" y="115" font-size="8" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif">Sen</text>
+                  <text x="38" y="115" font-size="8" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif">Sel</text>
+                  <text x="76" y="115" font-size="8" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif">Rab</text>
+                  <text x="114" y="115" font-size="8" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif">Kam</text>
+                  <text x="152" y="115" font-size="8" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif">Jum</text>
+                  <text x="192" y="115" font-size="8" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif">Sab</text>
+                  <text x="234" y="115" font-size="8" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif">Min</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tab-dashboard -->
+
+      <!-- TAB: ANALYTICS -->
+      <div id="tab-analytics" class="db-tab-content" style="display:none;">
+        <div class="db-panel" style="padding:3rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:1rem;">📈</div>
+          <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Analytics Module</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);">Laporan penjualan, tren stok, dan analitik mendalam akan tersedia di sini.</div>
+        </div>
+      </div>
+
+      <!-- TAB: INVENTORY -->
+      <div id="tab-inventory" class="db-tab-content" style="display:none;">
+        <div class="db-panel" style="padding:3rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:1rem;">📦</div>
+          <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Inventory Management</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);">Tambah, edit, dan hapus produk dari katalog inventori lengkap di sini.</div>
+        </div>
+      </div>
+
+      <!-- TAB: STOCK IN/OUT -->
+      <div id="tab-stockinout" class="db-tab-content" style="display:none;">
+        <div class="db-panel" style="padding:3rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:1rem;">🔄</div>
+          <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Stock In / Out</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);">Catat setiap pergerakan stok masuk dan keluar secara real-time di sini.</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastMsg" style="
+    position:fixed; bottom:1.5rem; right:1.5rem;
+    background:#10b981; color:#fff;
+    padding:12px 20px; border-radius:10px;
+    font-size:0.85rem; font-weight:600;
+    box-shadow:0 8px 24px rgba(0,0,0,0.3);
+    transform:translateY(100px); opacity:0;
+    transition:all 0.35s cubic-bezier(0.4,0,0.2,1);
+    z-index:9999; pointer-events:none;
+  "></div>
+
+</div><!-- /page-dashboard -->
+
+
+<script>
+  /* ── Page routing ── */
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(function(p) {
+      p.classList.remove('active');
+      if (p.classList.contains('dashboard-page')) p.style.display = 'none';
+    });
+    var target = document.getElementById('page-' + name);
+    if (!target) return;
+    target.classList.add('active');
+    if (target.classList.contains('dashboard-page')) {
+      target.style.display = 'flex';
+    }
+    window.scrollTo(0, 0);
+  }
+
+  /* ── Hero bg zoom ── */
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var bg = document.getElementById('heroBg');
+      if (bg) bg.classList.add('zoomed');
+    }, 100);
+  });
+
+  /* ── Navbar scroll ── */
+  window.addEventListener('scroll', function () {
+    var nav = document.getElementById('mainNav');
+    if (!nav) return;
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(5,5,5,0.98)';
+      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.4)';
+    } else {
+      nav.style.background = 'rgba(10,10,10,0.95)';
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  /* ── Mobile menu ── */
+  function toggleMobileMenu() {
+    var menu = document.getElementById('navMobile');
+    if (menu) menu.classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    var menu = document.getElementById('navMobile');
+    if (menu) menu.classList.remove('open');
+  }
+
+  /* ── Dashboard sidebar ── */
+  function toggleSidebar() {
+    var sb = document.getElementById('dbSidebar');
+    if (sb) sb.classList.toggle('open');
+  }
+
+  /* ── Dashboard tab switching ── */
+  function switchDashTab(el, tabId) {
+    document.querySelectorAll('.db-nav-item').forEach(function(i) {
+      i.classList.remove('active');
+    });
+    el.classList.add('active');
+    document.querySelectorAll('.db-tab-content').forEach(function(t) {
+      t.style.display = 'none';
+    });
+    var tab = document.getElementById(tabId);
+    if (tab) tab.style.display = '';
+  }
+
+  /* ── Inventory filter ── */
+  function filterTable() {
+    var search = (document.getElementById('inventorySearch').value || '').toLowerCase();
+    var kat = (document.getElementById('katFilter').value || '').toLowerCase();
+    var status = (document.getElementById('statusFilter').value || '').toLowerCase();
+    var rows = document.querySelectorAll('#inventoryTbody tr');
+    rows.forEach(function(row) {
+      var text = row.textContent.toLowerCase();
+      var rowKat = (row.getAttribute('data-kat') || '').toLowerCase();
+      var rowStatus = (row.getAttribute('data-status') || '').toLowerCase();
+      var show = true;
+      if (search && text.indexOf(search) === -1) show = false;
+      if (kat && rowKat !== kat) show = false;
+      if (status && rowStatus !== status) show = false;
+      row.style.display = show ? '' : 'none';
+    });
+  }
+
+  /* ── Order toast ── */
+  function showOrderToast(name) {
+    var t = document.getElementById('toastMsg');
+    if (!t) return;
+    t.textContent = '✅ Order restock ' + name + ' berhasil dibuat!';
+    t.style.transform = 'translateY(0)';
+    t.style.opacity = '1';
+    setTimeout(function () {
+      t.style.transform = 'translateY(100px)';
+      t.style.opacity = '0';
+    }, 3000);
+  }
+
+  /* ── Smooth scroll nav links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href === '#') return;
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ── Active nav link on scroll ── */
+  var sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', function() {
+    var scrollY = window.scrollY + 100;
+    sections.forEach(function(section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
+      if (scrollY >= top && scrollY < top + height) {
+        document.querySelectorAll('.nav-menu a').forEach(function(a) {
+          a.classList.remove('active');
+          if (a.getAttribute('href') === '#' + id) {
+            a.classList.add('active');
+          }
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
