@@ -2574,6 +2574,12 @@ tbody td {
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 1.25rem;
 }
+
+@media (max-width: 768px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .settings-panel-content {
   padding: 1.5rem 1.25rem;
   display: flex;
@@ -2758,5 +2764,118 @@ tbody td {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+  .settings-panel-content {
+    padding: 1rem 0.75rem;
+    gap: 1.5rem;
+  }
+  .setting-form-grid {
+    gap: 0.75rem;
+  }
+}
+
+/* ── Responsive Table Mobile ── */
+@media (max-width: 768px) {
+  .inventory-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .inventory-table-wrap table {
+    table-layout: auto;
+  }
+
+  .inventory-table-wrap thead th,
+  .inventory-table-wrap tbody td {
+    padding: 0.35rem 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  .inventory-table-wrap .td-product-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .inventory-table-wrap .td-product-sub {
+    font-size: 0.55rem;
+    opacity: 0.6;
+  }
+
+  .inventory-table-wrap .td-product-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+
+  .inventory-table-wrap .sku-chip,
+  .inventory-table-wrap .kat-chip,
+  .inventory-table-wrap .status-badge {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    white-space: nowrap;
+  }
+
+  .inventory-table-wrap th:nth-child(5),
+  .inventory-table-wrap td:nth-child(5) {
+    display: none;
+  }
+
+  .inventory-table-wrap th:nth-child(2),
+  .inventory-table-wrap td:nth-child(2) {
+    display: none;
+  }
+
+  .inventory-table-wrap th:nth-child(7),
+  .inventory-table-wrap td:nth-child(7) {
+    display: none;
+  }
+
+  .inventory-controls {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .inventory-toolbar {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .stock-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .stock-history-table thead th,
+  .stock-history-table tbody td {
+    padding: 0.35rem 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  .stock-history-table th:nth-child(5),
+  .stock-history-table td:nth-child(5) {
+    display: none;
+  }
+
+  .stock-history-table th:nth-child(6),
+  .stock-history-table td:nth-child(6) {
+    display: none;
+  }
+
+  .stock-history-table th:nth-child(8),
+  .stock-history-table td:nth-child(8) {
+    display: none;
+  }
+
+  .stock-row-actions {
+    gap: 0.3rem;
+  }
+
+  .inventory-action-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .inventory-action-btn .material-icons-round {
+    font-size: 0.8rem;
   }
 }

@@ -15,19 +15,10 @@
   <div id="page-analytics" class="dashboard-page page active" style="display:flex;">
     <header class="db-topbar">
       <div class="db-topbar-left">
-        <button class="db-menu-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar"><span class="material-icons-round">menu</span></button>
-        <h1>Inventory Control</h1>
-        <span class="db-live-badge">Live</span>
+        <button class="db-menu-toggle" aria-label="Toggle sidebar"><span class="material-icons-round">menu</span></button>
+        <h1>Analytics</h1>
       </div>
       <div class="db-topbar-right">
-        <button class="topbar-btn" aria-label="Notifications">
-          <span class="material-icons-round">notifications</span>
-          <span class="badge-dot"></span>
-        </button>
-        <div class="topbar-user">
-          <div class="avatar">AD</div>
-          <span class="uname">Admin</span>
-        </div>
         <button class="topbar-btn" onclick="window.location.href='../index.html'" title="Kembali ke Landing Page" style="font-size:0.75rem;width:auto;padding:0 10px;gap:4px;">
           <span class="material-icons-round" style="font-size:1rem;">logout</span> Log out
         </button>
@@ -146,11 +137,6 @@
     </div>
   </div>
 
-  <script>
-    function toggleSidebar() {
-      var sb = document.getElementById('dbSidebar');
-      if (sb) sb.classList.toggle('open');
-    }
-  </script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
