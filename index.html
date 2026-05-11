@@ -86,6 +86,12 @@
           </div>
 
           <div class="flex items-center justify-end gap-4">
+            <!-- Chatbot Toggle Header Button -->
+            <button id="chatbotToggleBtn" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/35 bg-white/10 text-white transition hover:bg-white/20" title="AI Chatbot Assist">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+            </button>
             <div class="hidden lg:flex">
               <a href="login.html" class="btn-login">Login</a>
             </div>
@@ -242,7 +248,7 @@
                 </svg>
 
                 <p class="mt-6 font-display text-6xl font-extrabold leading-none text-white">
-                  <span class="counter" data-target="16">0</span><span class="text-primary-500">+</span>
+                  <span class="counter" data-target="3r">0</span><span class="text-primary-500">+</span>
                 </p>
                 <p class="mt-1 text-sm uppercase tracking-[0.2em] text-slate-300">Tahun Melayani</p>
               </div>
@@ -374,7 +380,7 @@
         <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.2fr,1fr,1fr] lg:px-8">
           <div>
             <h2 class="font-display text-3xl font-extrabold uppercase text-accent-300">Global Auto <span class="text-white">Variasi</span></h2>
-            <p class="mt-4 max-w-md text-sm leading-relaxed text-slate-400">Pusat variasi dan modifikasi kendaraan terpercaya di Surabaya sejak 2008. Produk original, kualitas pengerjaan presisi, dan harga kompetitif.</p>
+            <p class="mt-4 max-w-md text-sm leading-relaxed text-slate-400">Pusat variasi dan modifikasi kendaraan terpercaya di Sidoarjo sejak 2024. Produk original, kualitas pengerjaan presisi, dan harga kompetitif.</p>
           </div>
 
           <div>
@@ -397,10 +403,132 @@
           </div>
         </div>
 
-        <p class="mx-auto mt-12 w-full max-w-6xl border-t border-white/10 px-4 pt-6 text-xs text-slate-500 sm:px-6 lg:px-8">© 2026 Global Auto Variasi Surabaya. Hak cipta dilindungi.</p>
+        <p class="mx-auto mt-12 w-full max-w-6xl border-t border-white/10 px-4 pt-6 text-xs text-slate-500 sm:px-6 lg:px-8">© 2026 Global Auto Variasi Sidoarjo. Hak cipta dilindungi.</p>
       </footer>
     </div>
 
+    <!-- Chatbot Overlay -->
+    <div id="chatbotOverlay" class="fixed inset-0 z-[9998] hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+
+    <!-- Chatbot Window Static UI (Wide & Dark) -->
+    <div id="chatbotWindow" class="fixed top-1/2 left-1/2 z-[9999] hidden w-[900px] max-w-[95vw] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#171717] shadow-2xl transition-all duration-300 opacity-0 scale-95 origin-center text-gray-200">
+      <!-- Chat Header -->
+      <div class="flex items-center justify-between bg-[#222222] px-6 py-4 border-b border-white/10 text-white">
+        <div class="flex items-center gap-3">
+          <div class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold tracking-wide">Auto Assist AI</h3>
+            <span class="text-[11px] text-gray-400">Selalu Aktif</span>
+          </div>
+        </div>
+        <button id="chatbotCloseBtn" class="text-gray-400 hover:text-white transition">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Chat Body -->
+      <div class="flex h-[450px] flex-col gap-6 overflow-y-auto p-6 bg-[#171717]">
+        <!-- Msg System -->
+        <div class="flex w-full justify-center">
+          <span class="rounded bg-[#2a2a2a] px-3 py-1 text-[11px] font-medium text-gray-400">Hari ini</span>
+        </div>
+
+        <!-- Msg Bot -->
+        <div class="flex items-start gap-4">
+          <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-black mt-1">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+          </div>
+          <div class="rounded-xl rounded-tl-sm bg-[#2d2d2d] p-4 text-[15px] leading-relaxed text-gray-200 border border-white/5 shadow-sm max-w-[80%]">
+            Halo! Saya asisten virtual Global Auto Variasi. Ada yang bisa saya bantu terkait modifikasi, audio, atau booking layanan?
+          </div>
+        </div>
+
+        <!-- Msg User -->
+        <div class="flex items-start justify-end gap-4">
+          <div class="rounded-xl rounded-tr-sm bg-[#444444] p-4 text-[15px] leading-relaxed text-white shadow-sm max-w-[80%]">
+            Bisa rekomendasi velg ring 17 untuk Honda Brio?
+          </div>
+          <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gray-500 text-white mt-1">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Msg Bot -->
+        <div class="flex items-start gap-4">
+          <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-black mt-1">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+          </div>
+          <div class="rounded-xl rounded-tl-sm bg-[#2d2d2d] p-4 text-[15px] leading-relaxed text-gray-200 border border-white/5 shadow-sm max-w-[80%]">
+            Tentu! Untuk Honda Brio, ring 17 sangat cocok untuk tampilan sporty. Beberapa rekomendasi terlaris kami:
+            <ul class="mt-3 ml-5 list-disc space-y-2 text-gray-300">
+              <li>Enkei Tuning (Ringan & kuat)</li>
+              <li>HSR Wheel (Desain modern)</li>
+              <li>Volk Rays (Gaya JDM klasik)</li>
+            </ul>
+            <br>Mau cek ketersediaan stok salah satu merk di atas?
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Footer / Input -->
+      <div class="border-t border-white/10 bg-[#222222] p-5">
+        <div class="flex items-center gap-3 rounded-lg bg-[#111111] px-4 py-3 border border-white/10">
+          <input type="text" placeholder="Ketik pesan..." readonly class="w-full bg-transparent text-[15px] text-gray-200 outline-none placeholder:text-gray-500 cursor-not-allowed" />
+          <svg class="h-6 w-6 text-gray-500 cursor-not-allowed" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
     <script src="main.js"></script>
+    <script>
+      // Toggle Chatbot UI
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('chatbotToggleBtn');
+        const closeBtn = document.getElementById('chatbotCloseBtn');
+        const chatWindow = document.getElementById('chatbotWindow');
+        const chatOverlay = document.getElementById('chatbotOverlay');
+
+        function toggleChat() {
+          if (chatWindow.classList.contains('hidden')) {
+            chatWindow.classList.remove('hidden');
+            chatOverlay.classList.remove('hidden');
+            // Give a slight delay before showing opacity/scale for transition effect
+            setTimeout(() => {
+              chatWindow.classList.remove('opacity-0', 'scale-95');
+              chatWindow.classList.add('opacity-100', 'scale-100');
+              chatOverlay.classList.remove('opacity-0');
+              chatOverlay.classList.add('opacity-100');
+            }, 10);
+          } else {
+            chatWindow.classList.remove('opacity-100', 'scale-100');
+            chatWindow.classList.add('opacity-0', 'scale-95');
+            chatOverlay.classList.remove('opacity-100');
+            chatOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+              chatWindow.classList.add('hidden');
+              chatOverlay.classList.add('hidden');
+            }, 300); // Wait for transition
+          }
+        }
+
+        if (toggleBtn) toggleBtn.addEventListener('click', toggleChat);
+        if (closeBtn) closeBtn.addEventListener('click', toggleChat);
+        if (chatOverlay) chatOverlay.addEventListener('click', toggleChat);
+      });
+    </script>
   </body>
 </html>
